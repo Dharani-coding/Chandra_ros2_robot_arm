@@ -7,7 +7,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/base_link.STL"/>
+                        filename="package://chandra_description/meshes/base_link.STL"/>
             </geometry>
             <material
                     name="">
@@ -21,7 +21,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/base_link.STL"/>
+                        filename="package://chandra_description/meshes/base_link.STL"/>
             </geometry>
         </collision>
     </link>
@@ -32,7 +32,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link1.STL"/>
+                        filename="package://chandra_description/meshes/link1.STL"/>
             </geometry>
             <material
                     name="">
@@ -46,7 +46,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link1.STL"/>
+                        filename="package://chandra_description/meshes/link1.STL"/>
             </geometry>
         </collision>
     </link>
@@ -73,7 +73,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link2.STL"/>
+                        filename="package://chandra_description/meshes/link2.STL"/>
             </geometry>
             <material
                     name="">
@@ -87,7 +87,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link2.STL"/>
+                        filename="package://chandra_description/meshes/link2.STL"/>
             </geometry>
         </collision>
     </link>
@@ -114,7 +114,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link3.STL"/>
+                        filename="package://chandra_description/meshes/link3.STL"/>
             </geometry>
             <material
                     name="">
@@ -128,7 +128,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link3.STL"/>
+                        filename="package://chandra_description/meshes/link3.STL"/>
             </geometry>
         </collision>
     </link>
@@ -155,7 +155,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link4.STL"/>
+                        filename="package://chandra_description/meshes/link4.STL"/>
             </geometry>
             <material
                     name="">
@@ -169,7 +169,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link4.STL"/>
+                        filename="package://chandra_description/meshes/link4.STL"/>
             </geometry>
         </collision>
     </link>
@@ -196,7 +196,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link5.STL"/>
+                        filename="package://chandra_description/meshes/link5.STL"/>
             </geometry>
             <material
                     name="">
@@ -210,7 +210,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="package://dofbot_moveit/meshes/link5.STL"/>
+                        filename="package://chandra_description/meshes/link5.STL"/>
             </geometry>
         </collision>
     </link>
