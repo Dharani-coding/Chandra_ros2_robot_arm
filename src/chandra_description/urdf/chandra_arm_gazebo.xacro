@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="chandra">
+
+  <gazebo>
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>$(find chandra_control)/config/chandra_controllers.yaml</parameters>
+      </plugin>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,24 @@
+<launch>
+  <arg name="is_sim" default="False"/>
+
+  <let name="urdf_path" value="$(find-pkg-share chandra_description)/urdf/chandra_arm.urdf.xacro"/>
+
+  <node pkg="robot_state_publisher" exec="robot_state_publisher" 
+        if="$(not $(var is_sim))">
+    <param name="robot_description" value="$(var urdf_path)"/>
+  </node>
+
+  <node pkg="controller_manager" exec="ros2_control_node" 
+        if="$(not $(var is_sim))">
+    <param name="robot_description" value="$(var urdf_path)"/>
+    <param name="use_sim_time" value="$(var is_sim)"/>
+    <rosparam file="$(find-pkg-share chandra_control)/config/chandra_controllers.yaml"/>
+  </node>
+
+  <node pkg="controller_manager" exec="spawner" 
+        args="joint_state_broadcaster --controller-manager /controller_manager"/>
+  <node pkg="controller_manager" exec="spawner" 
+        args="arm_controller --controller-manager /controller_manager"/>
+  <node pkg="controller_manager" exec="spawner" 
+        args="gripper_controller --controller-manager /controller_manager"/>
+</launch>
