@@ -9,7 +9,7 @@
             <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </hardware>
 
-        <joint name="joint_1">
+        <joint name="joint1">
             <command_interface name="position">
             <param name="min">-${PI / 2}</param>
             <param name="max">${PI / 2}</param>
@@ -17,7 +17,7 @@
             <state_interface name="position"/>
         </joint>
 
-        <joint name="joint_2">
+        <joint name="joint2">
             <command_interface name="position">
             <param name="min">-${PI / 2}</param>
             <param name="max">${PI / 2}</param>
@@ -25,7 +25,7 @@
             <state_interface name="position"/>
         </joint>
 
-        <joint name="joint_3">
+        <joint name="joint3">
             <command_interface name="position">
             <param name="min">-${PI / 2}</param>
             <param name="max">${PI / 2}</param>
@@ -33,7 +33,7 @@
             <state_interface name="position"/>
         </joint>
 
-        <joint name="joint_4">
+        <joint name="joint4">
             <command_interface name="position">
             <param name="min">-${PI / 2}</param>
             <param name="max">${PI / 2}</param>
@@ -41,7 +41,7 @@
             <state_interface name="position"/>
         </joint>
 
-        <joint name="joint_5">
+        <joint name="joint5">
             <command_interface name="position">
             <param name="min">-${PI / 2}</param>
             <param name="max">${PI / 2}</param>
@@ -49,7 +49,7 @@
             <state_interface name="position"/>
         </joint>
 
-        <joint name="joint_6">
+        <joint name="joint6">
             <command_interface name="position">
             <param name="min">-${PI / 2}</param>
             <param name="max">0.0</param>
@@ -57,8 +57,8 @@
             <state_interface name="position"/>
         </joint>
 
-        <joint name="joint_7">
-            <param name="mimic">joint_6</param>
+        <joint name="joint7">
+            <param name="mimic">joint6</param>
             <param name="multiplier">-1</param>
         </joint>
     </ros2_control>

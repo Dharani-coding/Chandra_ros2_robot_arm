@@ -284,7 +284,7 @@
         <xacro:default_inertial mass="0.01"/>
         <visual>
             <origin
-                    xyz="0 0 0"
+                    xyz="0.0121 0 -0.0335"
                     rpy="0 0 0"/>
             <geometry>
                 <mesh filename="file://$(find chandra_description)/meshes/gripper_right_finger.STL"/>
@@ -292,20 +292,20 @@
         </visual>
         <collision>
             <origin
-                    xyz="0 0 0"
+                    xyz="0.0121 0 -0.0335"
                     rpy="0 0 0"/>
             <geometry>
                 <mesh filename="file://$(find chandra_description)/meshes/gripper_right_finger.STL"/>
             </geometry>
         </collision>
     </link>
-    <joint name ="joint_6" type="revolute">
+    <joint name ="joint6" type="revolute">
         <parent link="link5"/>
         <child link = "gripper_right"/>
         <origin
-                xyz="0 0 0"
+                xyz="-0.0121 0 0.0335"
                 rpy="0 0 0"/>
-        <axis xyz="0 0 1"/>
+        <axis xyz="0 1 0"/>
         <limit lower="-${PI / 2}" upper="0.0" 
                effort="${effort}" velocity="${velocity}"/>
     </joint>
@@ -313,7 +313,7 @@
         <xacro:default_inertial mass="0.01"/>
         <visual>
             <origin
-                    xyz="0 0 0"
+                    xyz="-0.0121 0 -0.0335"
                     rpy="0 0 0"/>
             <geometry>
                 <mesh filename="file://$(find chandra_description)/meshes/gripper_left_finger.STL"/>
@@ -321,22 +321,22 @@
         </visual>
         <collision>
             <origin
-                    xyz="0 0 0"
+                    xyz="-0.0121 0 -0.0335"
                     rpy="0 0 0"/>
             <geometry>
                 <mesh filename="file://$(find chandra_description)/meshes/gripper_left_finger.STL"/>
             </geometry>
         </collision>
     </link>
-    <joint name ="joint_7" type="revolute">
+    <joint name ="joint7" type="revolute">
         <parent link="link5"/>
         <child link = "gripper_left"/>
         <origin
-                xyz="0 0 0"
+                xyz="0.0121 0 0.0335"
                 rpy="0 0 0"/>
-        <axis xyz="0 0 1"/>
+        <axis xyz="0 1 0"/>
         <limit lower="0.0" upper="${PI / 2}" 
                effort="${effort}" velocity="${velocity}"/>
-        <mimic joint="joint_6" multiplier="-1"/>
+        <mimic joint="joint6" multiplier="-1"/>
     </joint>
 </robot>

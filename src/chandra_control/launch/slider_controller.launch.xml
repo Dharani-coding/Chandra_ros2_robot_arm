@@ -1,5 +1,5 @@
 <launch>
-  <include launch-file="$(find-pkg-share chandra_control)/launch/controller.launch.xml">
+  <include file="$(find-pkg-share chandra_control)/launch/controller.launch.xml">
     <arg name="is_sim" value="False"/>
   </include>
 

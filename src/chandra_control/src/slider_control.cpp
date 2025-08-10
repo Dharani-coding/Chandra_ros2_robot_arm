@@ -29,8 +29,8 @@ private:
   void sliderCallback(const sensor_msgs::msg::JointState &msg) const
   {
     trajectory_msgs::msg::JointTrajectory arm_command, gripper_command;
-    arm_command.joint_names = {"joint_1", "joint_2", "joint_3"};
-    gripper_command.joint_names = {"joint_4"};
+    arm_command.joint_names = {"joint1", "joint2", "joint3", "joint4", "joint5"};
+    gripper_command.joint_names = {"joint6"};
 
     trajectory_msgs::msg::JointTrajectoryPoint arm_goal, gripper_goal;
     arm_goal.positions.insert(arm_goal.positions.end(), msg.position.begin(), msg.position.begin() + 3);
