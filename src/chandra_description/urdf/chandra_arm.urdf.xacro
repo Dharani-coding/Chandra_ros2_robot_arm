@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="chandra" xmlns:xacro="http://www.ros.org/wiki/xacro">
+        <!-- Color Properties -->
+        <xacro:property name="deep_blue" value="0.0 0.0 0.6 1"/>
+        <xacro:property name="green" value="0.0 0.7 0.0 1"/>
+        <xacro:property name="black" value="0.05 0.05 0.05 1"/>
+        <!-- Macro for metallic material -->
+        <xacro:macro name="metallic_material" params="name colour">
+                <material name="${name}">
+                        <color rgba="${colour}"/>
+                        <specular value="0.8 0.8 0.8 1"/>
+                </material>
+        </xacro:macro>
+        <!-- Xacro Properties for common values -->
+        <xacro:property name="default_colour" value="0.7 0.7 0.7 1"/>
+        <xacro:property name="default_scale" value="1 1 1"/>
     <xacro:property name="effort" value="100"/>
     <xacro:property name="velocity" value="1"/>
 
@@ -21,24 +35,13 @@
     <xacro:include filename="$(find chandra_description)/urdf/chandra_arm_control.xacro" />
 
     <link name="base_link">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="0.1"/>
-            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-        </inertial>
+        <xacro:default_inertial mass="10.0"/>
         <visual>
-            <origin
-                    xyz="0 0 0"
-                    rpy="0 0 0"/>
-            <geometry>
-                <mesh
-                        filename="file://$(find chandra_description)/meshes/base_link.STL"/>
-            </geometry>
-            <material
-                    name="">
-                <color
-                        rgba="0.7 0.7 0.7 1"/>
-            </material>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                        <mesh filename="file://$(find chandra_description)/meshes/base_link.STL" scale="${default_scale}"/>
+                </geometry>
+                <xacro:metallic_material name="base_link_material" colour="${deep_blue}"/>
         </visual>
         <collision>
             <origin
@@ -46,29 +49,18 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="file://$(find chandra_description)/meshes/base_link.STL"/>
+                        filename="file://$(find chandra_description)/meshes/base_link.STL" scale="${default_scale}"/>
             </geometry>
         </collision>
     </link>
     <link name="link1">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="0.1"/>
-            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-        </inertial>
+        <xacro:default_inertial mass="2.0"/>
         <visual>
-            <origin
-                    xyz="0 0 0"
-                    rpy="0 0 0"/>
-            <geometry>
-                <mesh
-                        filename="file://$(find chandra_description)/meshes/link1.STL"/>
-            </geometry>
-            <material
-                    name="">
-                <color
-                        rgba="0 0.7 0 1"/>
-            </material>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                        <mesh filename="file://$(find chandra_description)/meshes/link1.STL" scale="${default_scale}"/>
+                </geometry>
+                <xacro:metallic_material name="link1_material" colour="${green}"/>
         </visual>
         <collision>
             <origin
@@ -76,7 +68,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="file://$(find chandra_description)/meshes/link1.STL"/>
+                        filename="file://$(find chandra_description)/meshes/link1.STL" scale="${default_scale}"/>
             </geometry>
         </collision>
     </link>
@@ -97,24 +89,13 @@
                 velocity="${velocity}"/>
     </joint>
     <link name="link2">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="0.1"/>
-            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-        </inertial>
+        <xacro:default_inertial mass="1.5"/>
         <visual>
-            <origin
-                    xyz="0 0 0"
-                    rpy="0 0 0"/>
-            <geometry>
-                <mesh
-                        filename="file://$(find chandra_description)/meshes/link2.STL"/>
-            </geometry>
-            <material
-                    name="">
-                <color
-                        rgba="0.7 0.7 0.7 1"/>
-            </material>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                        <mesh filename="file://$(find chandra_description)/meshes/link2.STL" scale="${default_scale}"/>
+                </geometry>
+                <xacro:metallic_material name="link2_material" colour="${deep_blue}"/>
         </visual>
         <collision>
             <origin
@@ -122,7 +103,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="file://$(find chandra_description)/meshes/link2.STL"/>
+                        filename="file://$(find chandra_description)/meshes/link2.STL" scale="${default_scale}"/>
             </geometry>
         </collision>
     </link>
@@ -143,24 +124,13 @@
                 velocity="${velocity}"/>
     </joint>
     <link name="link3">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="0.1"/>
-            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-        </inertial>
+        <xacro:default_inertial mass="1.0"/>
         <visual>
-            <origin
-                    xyz="0 0 0"
-                    rpy="0 0 0"/>
-            <geometry>
-                <mesh
-                        filename="file://$(find chandra_description)/meshes/link3.STL"/>
-            </geometry>
-            <material
-                    name="">
-                <color
-                        rgba="0 0.7 0 1"/>
-            </material>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                        <mesh filename="file://$(find chandra_description)/meshes/link3.STL" scale="${default_scale}"/>
+                </geometry>
+                <xacro:metallic_material name="link3_material" colour="${green}"/>
         </visual>
         <collision>
             <origin
@@ -168,7 +138,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="file://$(find chandra_description)/meshes/link3.STL"/>
+                        filename="file://$(find chandra_description)/meshes/link3.STL" scale="${default_scale}"/>
             </geometry>
         </collision>
     </link>
@@ -189,24 +159,13 @@
                 velocity="${velocity}"/>
     </joint>
     <link name="link4">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="0.1"/>
-            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-        </inertial>
+        <xacro:default_inertial mass="0.7"/>
         <visual>
-            <origin
-                    xyz="0 0 0"
-                    rpy="0 0 0"/>
-            <geometry>
-                <mesh
-                        filename="file://$(find chandra_description)/meshes/link4.STL"/>
-            </geometry>
-            <material
-                    name="">
-                <color
-                        rgba="0.7 0.7 0.7 1"/>
-            </material>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                        <mesh filename="file://$(find chandra_description)/meshes/link4.STL" scale="${default_scale}"/>
+                </geometry>
+                <xacro:metallic_material name="link4_material" colour="${deep_blue}"/>
         </visual>
         <collision>
             <origin
@@ -214,7 +173,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="file://$(find chandra_description)/meshes/link4.STL"/>
+                        filename="file://$(find chandra_description)/meshes/link4.STL" scale="${default_scale}"/>
             </geometry>
         </collision>
     </link>
@@ -235,24 +194,13 @@
                 velocity="${velocity}"/>
     </joint>
     <link name="link5">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="0.1"/>
-            <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-        </inertial>
+        <xacro:default_inertial mass="0.5"/>
         <visual>
-            <origin
-                    xyz="0 0 0"
-                    rpy="0 0 0"/>
-            <geometry>
-                <mesh
-                        filename="file://$(find chandra_description)/meshes/link5.STL"/>
-            </geometry>
-            <material
-                    name="">
-                <color
-                        rgba="1 1 1 1"/>
-            </material>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                        <mesh filename="file://$(find chandra_description)/meshes/link5.STL" scale="${default_scale}"/>
+                </geometry>
+                <xacro:metallic_material name="link5_material" colour="${deep_blue}"/>
         </visual>
         <collision>
             <origin
@@ -260,7 +208,7 @@
                     rpy="0 0 0"/>
             <geometry>
                 <mesh
-                        filename="file://$(find chandra_description)/meshes/link5.STL"/>
+                        filename="file://$(find chandra_description)/meshes/link5.STL" scale="${default_scale}"/>
             </geometry>
         </collision>
     </link>
@@ -283,19 +231,18 @@
     <link name="gripper_right">
         <xacro:default_inertial mass="0.01"/>
         <visual>
-            <origin
-                    xyz="0.0121 0 -0.0335"
-                    rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find chandra_description)/meshes/gripper_right_finger.STL"/>
-            </geometry>
+                <origin xyz="0.0121 0 -0.0335" rpy="0 0 0"/>
+                <geometry>
+                        <mesh filename="file://$(find chandra_description)/meshes/gripper_right_finger.STL" scale="${default_scale}"/>
+                </geometry>
+                <xacro:metallic_material name="gripper_right_material" colour="${black}"/>
         </visual>
         <collision>
             <origin
                     xyz="0.0121 0 -0.0335"
                     rpy="0 0 0"/>
             <geometry>
-                <mesh filename="file://$(find chandra_description)/meshes/gripper_right_finger.STL"/>
+                <mesh filename="file://$(find chandra_description)/meshes/gripper_right_finger.STL" scale="${default_scale}"/>
             </geometry>
         </collision>
     </link>
@@ -312,19 +259,18 @@
     <link name="gripper_left">
         <xacro:default_inertial mass="0.01"/>
         <visual>
-            <origin
-                    xyz="-0.0121 0 -0.0335"
-                    rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="file://$(find chandra_description)/meshes/gripper_left_finger.STL"/>
-            </geometry>
+                <origin xyz="-0.0121 0 -0.0335" rpy="0 0 0"/>
+                <geometry>
+                        <mesh filename="file://$(find chandra_description)/meshes/gripper_left_finger.STL" scale="${default_scale}"/>
+                </geometry>
+                <xacro:metallic_material name="gripper_left_material" colour="${black}"/>
         </visual>
         <collision>
             <origin
                     xyz="-0.0121 0 -0.0335"
                     rpy="0 0 0"/>
             <geometry>
-                <mesh filename="file://$(find chandra_description)/meshes/gripper_left_finger.STL"/>
+                <mesh filename="file://$(find chandra_description)/meshes/gripper_left_finger.STL" scale="${default_scale}"/>
             </geometry>
         </collision>
     </link>

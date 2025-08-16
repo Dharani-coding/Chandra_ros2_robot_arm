@@ -33,8 +33,8 @@ private:
     gripper_command.joint_names = {"joint6"};
 
     trajectory_msgs::msg::JointTrajectoryPoint arm_goal, gripper_goal;
-    arm_goal.positions.insert(arm_goal.positions.end(), msg.position.begin(), msg.position.begin() + 3);
-    gripper_goal.positions.push_back(msg.position.at(3));
+    arm_goal.positions.insert(arm_goal.positions.end(), msg.position.begin(), msg.position.begin() + 5);
+    gripper_goal.positions.push_back(msg.position.at(5));
     
     arm_command.points.push_back(arm_goal);
     gripper_command.points.push_back(gripper_goal);
