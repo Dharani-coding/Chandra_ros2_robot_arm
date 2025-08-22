@@ -1,2 +1,3 @@
 source /opt/ros/jazzy/setup.bash
-export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:/opt/ros/jazzy/lib
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export QT_QPA_PLATFORM=xcb

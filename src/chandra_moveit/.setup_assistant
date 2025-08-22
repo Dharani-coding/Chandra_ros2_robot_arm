@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: chandra_description
+    relative_path: urdf/chandra_arm.urdf.xacro
+  srdf:
+    relative_path: config/chandra.srdf
+  package_settings:
+    author_name: Dharani Saravanan
+    author_email: dharanisara14@gmail.com
+    generated_timestamp: 1755581753

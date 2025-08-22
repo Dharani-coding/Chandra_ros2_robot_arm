@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="chandra">
 
+    <xacro:property name="PI" value="3.14159265359" />
+
     <ros2_control name="RobotSystem" type="system">
-
-        <xacro:property name="PI" value="3.14159265359" />
-
         <hardware>
             <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </hardware>

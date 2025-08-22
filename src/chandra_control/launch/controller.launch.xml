@@ -1,5 +1,5 @@
 <launch>
-  <arg name="is_sim" default="False"/>
+  <arg name="is_sim" default="True"/>
 
   <let name="urdf_path" value="$(find-pkg-share chandra_description)/urdf/chandra_arm.urdf.xacro"/>
 
