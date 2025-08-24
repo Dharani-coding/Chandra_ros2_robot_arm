@@ -1,8 +1,4 @@
 <launch>
-  <include file="$(find-pkg-share chandra_control)/launch/controller.launch.xml">
-    <arg name="is_sim" value="False"/>
-  </include>
-
   <node pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui">
     <remap from="/joint_states" to="/joint_commands"/>
   </node>

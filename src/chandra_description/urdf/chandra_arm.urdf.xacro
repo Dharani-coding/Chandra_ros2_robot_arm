@@ -28,6 +28,8 @@
         </inertial>
     </xacro:macro>
 
+    <xacro:arg name="is_sim" default="False"/>
+
     <!-- Include Gazebo Parameters -->
     <xacro:include filename="$(find chandra_description)/urdf/chandra_arm_gazebo.xacro" />
 

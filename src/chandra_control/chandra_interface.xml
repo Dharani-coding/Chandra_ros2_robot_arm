@@ -1,0 +1,9 @@
+<library path="chandra_controller">
+  <class name="chandra_controller/ChandraInterface"
+         type="chandra_controller::ChandraInterface"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+        Hardware interface for the Chandra robot arm.
+    </description>
+  </class>
+</library>
