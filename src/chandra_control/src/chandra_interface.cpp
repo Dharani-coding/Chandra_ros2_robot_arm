@@ -1,10 +1,10 @@
-#include "chandra_interface.hpp"
 #include <pluginlib/class_list_macros.hpp>
-#include "robot_arm_driver.hpp"
 #include <cmath>
 #include <cstdint>
+#include "chandra_control/chandra_interface.hpp"
+#include "chandra_control/robot_arm_driver.hpp"
 
-namespace chandra_hardware
+namespace chandra_control
 {
 
   // Initialization (parse hardware info from URDF/hardware.yaml)
@@ -92,35 +92,38 @@ namespace chandra_hardware
   // Read servo states -> convert to radians
   hardware_interface::return_type ChandraInterface::read(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
   {
-    // if (hw_commands_ == prev_position_commands_)
+
+    // Open Loop Control - assuming the robot is always where we command to be
+    hw_states_ = hw_commands_;
+
+    // for (size_t i = 0; i < servo_ids_.size(); i++)
     // {
-    //   // Nothing changed, do not send any command
-    //   return hardware_interface::return_type::OK;
+    //   int ticks = driver_->getServoPosition(servo_ids_[i]);
+    //   if (ticks >= 0)
+    //   {
+    //     hw_states_[i] = ticksToRad(ticks);
+    //   }
     // }
 
-    for (size_t i = 0; i < servo_ids_.size(); i++)
-    {
-      int ticks = driver_->getServoPosition(servo_ids_[i]);
-      if (ticks >= 0)
-      {
-        hw_states_[i] = ticksToRad(ticks);
-      }
-    }
-
-    prev_position_commands_ = hw_commands_;
     return hardware_interface::return_type::OK;
   }
 
   // Write commanded positions -> convert rad to ticks
   hardware_interface::return_type ChandraInterface::write(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
   {
-    // for (size_t i = 0; i < servo_ids_.size(); i++) {
-    //   int ticks = radToTicks(hw_commands_[i]);
-    //   driver_->setServoPosition(servo_ids_[i], ticks, 100);  // default 100ms duration
-    // }
-    // Open Loop Control - assuming the robot is always where we command to be
-    hw_states_ = hw_commands_;
 
+    // if (hw_commands_ == prev_position_commands_)
+    // {
+    //   // Nothing changed, do not send any command
+    //   return hardware_interface::return_type::OK;
+    // }
+
+    for (size_t i = 0; i < servo_ids_.size(); i++) {
+      int ticks = radToTicks(hw_commands_[i]);
+      driver_->setServoPosition(servo_ids_[i], ticks, 500);  // default 100ms duration
+    }
+
+    // prev_position_commands_ = hw_commands_;
     return hardware_interface::return_type::OK;
   }
 
@@ -186,7 +189,7 @@ namespace chandra_hardware
     return angle_rad;
   }
 
-} // namespace chandra_hardware
+} // namespace chandra_control
 
 // Export plugin
-PLUGINLIB_EXPORT_CLASS(chandra_hardware::ChandraInterface, hardware_interface::SystemInterface)
+PLUGINLIB_EXPORT_CLASS(chandra_control::ChandraInterface, hardware_interface::SystemInterface)

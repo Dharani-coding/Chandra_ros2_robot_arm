@@ -20,7 +20,7 @@
         <!-- ros2_control Real Robot -->
         <xacro:unless value="$(arg is_sim)">
             <hardware>
-                <plugin>chandra_controller/ChandraInterface</plugin>
+                <plugin>chandra_control/ChandraInterface</plugin>
             </hardware>
         </xacro:unless>
 

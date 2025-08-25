@@ -4,9 +4,9 @@
 #include <hardware_interface/types/hardware_interface_type_values.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <vector>
-#include "robot_arm_driver.hpp"
+#include "chandra_control/robot_arm_driver.hpp"
 
-namespace chandra_hardware
+namespace chandra_control
 {
 
 class ChandraInterface : public hardware_interface::SystemInterface
@@ -52,4 +52,4 @@ private:
   // std::vector<double> joint_max_rad_;
 };
 
-}  // namespace chandra_hardware
+}  // namespace chandra_control

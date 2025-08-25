@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <cstdint>
-#include "robot_arm_defs.h"
+#include "chandra_control/robot_arm_defs.h"
 
 class RobotArmDriver
 {
