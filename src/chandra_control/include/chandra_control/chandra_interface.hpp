@@ -48,8 +48,8 @@ private:
 
   // Joint parameters (read from URDF/xacro)
   std::vector<int> servo_ids_;
-  // std::vector<double> joint_min_rad_;
-  // std::vector<double> joint_max_rad_;
+  // joint offsets
+  std::vector<int> joint_offsets_;
 };
 
 }  // namespace chandra_control

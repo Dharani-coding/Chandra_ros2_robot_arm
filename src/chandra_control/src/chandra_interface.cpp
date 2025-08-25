@@ -20,20 +20,15 @@ namespace chandra_control
     hw_states_.resize(num_joints, 0.0);
     hw_commands_.resize(num_joints, 0.0);
     prev_position_commands_.resize(num_joints, 0.0);
+    joint_offsets_ = { -48, -44, -47, -48, -558, 0}; // Adjust these offsets as needed
 
     servo_ids_.resize(num_joints);
-    // joint_min_rad_.resize(num_joints);
-    // joint_max_rad_.resize(num_joints);
 
     // Parse joint configs
     for (size_t i = 0; i < num_joints; i++)
     {
       const auto &joint = info.joints[i];
       servo_ids_[i] = std::stoi(joint.parameters.at("servo_id"));
-
-      // // Joint rad limits
-      // joint_min_rad_[i] = info.joints[i].limits.lower;
-      // joint_max_rad_[i] = info.joints[i].limits.upper;
     }
 
     return hardware_interface::CallbackReturn::SUCCESS;
@@ -99,6 +94,7 @@ namespace chandra_control
     // for (size_t i = 0; i < servo_ids_.size(); i++)
     // {
     //   int ticks = driver_->getServoPosition(servo_ids_[i]);
+    //   ticks -= joint_offsets_[i];
     //   if (ticks >= 0)
     //   {
     //     hw_states_[i] = ticksToRad(ticks);
@@ -120,6 +116,7 @@ namespace chandra_control
 
     for (size_t i = 0; i < servo_ids_.size(); i++) {
       int ticks = radToTicks(hw_commands_[i]);
+      ticks += joint_offsets_[i];
       driver_->setServoPosition(servo_ids_[i], ticks, 500);  // default 100ms duration
     }
 

@@ -26,7 +26,6 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     # Launch Arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default=False)
-    gz_args = LaunchConfiguration('gz_args', default='')
 
     # Get URDF via xacro
     robot_description_content = Command(
