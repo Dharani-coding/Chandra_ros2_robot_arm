@@ -91,14 +91,14 @@ namespace chandra_control
     // Open Loop Control - assuming the robot is always where we command to be
     hw_states_ = hw_commands_;
 
-    // for (size_t i = 0; i < servo_ids_.size(); i++)
-    // {
+    // for (size_t i = 1; i < servo_ids_.size(); i++) {  // skip base rotation (servo 1)
     //   int ticks = driver_->getServoPosition(servo_ids_[i]);
     //   ticks -= joint_offsets_[i];
     //   if (ticks >= 0)
     //   {
     //     hw_states_[i] = ticksToRad(ticks);
     //   }
+    //   std::this_thread::sleep_for(std::chrono::milliseconds(5)); // small delay for servo response
     // }
 
     return hardware_interface::return_type::OK;
@@ -114,10 +114,11 @@ namespace chandra_control
     //   return hardware_interface::return_type::OK;
     // }
 
-    for (size_t i = 0; i < servo_ids_.size(); i++) {
+    for (size_t i = 1; i < servo_ids_.size(); i++) { // skip base rotation (servo 1)
       int ticks = radToTicks(hw_commands_[i]);
       ticks += joint_offsets_[i];
       driver_->setServoPosition(servo_ids_[i], ticks, 500);  // default 100ms duration
+      std::this_thread::sleep_for(std::chrono::milliseconds(5)); // small delay for servo response
     }
 
     // prev_position_commands_ = hw_commands_;
