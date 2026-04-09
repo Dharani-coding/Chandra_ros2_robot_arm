@@ -14,7 +14,10 @@ This repository demonstrates a professional ROS 2 robotics stack for a six-joint
 
 ## Demo
 
-[![Watch Demo](media/thumbnail.png)](media/demo.mp4)
+<video width="320" height="240" controls>
+  <source src="media/demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 The demo showcases interactive motion planning using RViz's MoveIt GUI to drag the end effector to target positions, and the arm instantly solves inverse kinematics and executes the motion in real time.
 
